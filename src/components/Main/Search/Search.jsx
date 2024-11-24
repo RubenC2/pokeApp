@@ -1,43 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Search = ({ onSubmitForm }) => {
   // Estado del Search
-  const [formValues, setValues] = useState({
-    name: ''
-  });
+  const [formValues, setValues] = useState({ name: '' });
+
+  const [pokemonName, setPokemonName] = useState(''); // Disparador
+
+  const [error, setError] = useState(false);
+
+
+// // FETCH INICIAL
+// useEffect(() => {
+//   const getPokemons = async () => {
+//     try {
+//       const resp = await axios.get(`https://pokeapi.co/api/v2/pokemon/`);
+//       setPokemonName(resp.data.results)
+//     } catch (err) {
+//       console.log(err)
+//     }
+//   }
+//   getPokemons();
+// }, []);
+
+  useEffect(() => {
+    async function getPokemons() {
+      if (pokemonName) {
+      try {
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`)
+          // `https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}/`);
+          console.log(response)
+        const pokemonData = response.data;
+
+        // Llama a la función "onSubmitForm" de Main con los datos del Pokémon
+        onSubmitForm([pokemonData]);
+        setError(false);
+      } catch (e) {
+        setError(true);
+      }
+    }
+  }
+    getPokemons();
+
+  }, [pokemonName]);
+
+
 
   const handleChange = (event) => {
-    const { name, value } = event.target; 
+    const { name, value } = event.target;
     setValues({
       ...formValues,
-      [name]: value 
+      [name]: value
     });
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const pokemonName = formValues.name.trim(); // Trim hace que no haya espacios al inicio o al final
+    const pokemonName = formValues.name.trim();
     if (pokemonName) {
-      onSubmitForm(pokemonName); 
-      setValues({ name: '' }); 
+      setPokemonName(pokemonName);
+      setValues({ name: '' });
     } else {
-      alert("Inserta el nombre de un Pokémon.");
+      alert("Inserta el nombre o número de un pokemon");
     }
   };
 
+
   return (
     <>
-      <h1>Hazte con todos</h1>
-      <form className="data" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={formValues.name}
-          onChange={handleChange}
-          placeholder="Nombre del Pokémon"
-        />
-        <button type="submit">Buscar Pokémon</button>
-      </form>
+      <div className='searchContainer'>
+        <h1 className='h1search'>Hazte con todos</h1>
+        <form className="data" onSubmit={handleSubmit}>
+          <input className='inputSearch'
+            type="text"
+            name="name"
+            value={formValues.name}
+            onChange={handleChange}
+            placeholder="Nombre o número"
+          />
+          <button type="submit">Buscar Pokémon</button>
+        </form>
+      </div>
     </>
   );
 };

@@ -8,10 +8,10 @@ function App() {
 
   return (
     <>
+      <Header />
       <div className='container'>
-      <BrowserRouter >
-        <Header />
-        {/* <UserContext.Provider value={ userData}> */}
+        <BrowserRouter >
+          {/* <UserContext.Provider value={ userData}> */}
           <Main />
         </BrowserRouter>
         {/* </UserContext.Provider> */}

@@ -1,10 +1,20 @@
 import React from "react";
-// import Card from "./Card"
+import Card from "./Card";
+import { v4 as uuidv4 } from "uuid";
 
-// Recibe la lista actualizada desde Main y genera dinámicamente una colección de componentes Card.
-
-const ListaPokemon = () => {
-  return <div>ListaPokemon</div>;
+const ListaPokemon = ({ pokemons }) => {
+  console.log("listapoke", pokemons)
+  return (
+    <>
+      <div className="card">
+        {
+          pokemons.map((item, index) => (
+            <Card key={uuidv4()} pokemon={item} />
+          ))
+        }
+      </div>
+    </>
+  );
 };
 
 export default ListaPokemon;
