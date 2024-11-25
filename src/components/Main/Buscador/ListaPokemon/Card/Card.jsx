@@ -10,8 +10,8 @@ const Card = ({ pokemon }) => {
 
   return (
     <div className="card">
+      <p>#{id}</p><br/>
       <h3>{name}</h3>
-      <p>{id}</p>
       <img src={sprites.front_default}/>
     </div>
     );

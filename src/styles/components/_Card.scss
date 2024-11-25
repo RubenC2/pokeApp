@@ -1,30 +1,31 @@
 .card {
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco translúcido */
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card h3 {
-    color: #f66a71;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    color: #f66a71;
-  }
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Fondo blanco translúcido */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-  .card a {
-    color: #ffcb05;
-    text-decoration: none; 
-    font-weight: bold;
-  }
-  
-  .card a:hover {
-    color: #f8b400;
-  }
-  
+.card h3 {
+  color: #f66a71;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #f66a71;
+}
+
+.card a {
+  color: #ffcb05;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card a:hover {
+  color: #f8b400;
+}

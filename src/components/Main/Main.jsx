@@ -1,32 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Search from "./Search";
-import ListaPokemon from "./ListaPokemon";
+import Search from "./Buscador/Search";
+import ListaPokemon from "./Buscador/ListaPokemon";
+import Buscador from './Buscador/Buscador';
 
 
 const Main = () => {
-  const [pokemons, setPokemons] = useState([]); // Estado para guardar la lista de Pokémon encontrados
-
-
-  const handleSearch = (pokemonData) => {
-    setPokemons((prevPokemon) => [...prevPokemon, pokemonData]); // Añade el nuevo Pokémon a la lista
-    //setPokemons(pokemonData); // Añade el nuevo Pokémon a la lista
-
-  };
 
   return (
     <div>
       <main>
-        <Search onSubmitForm={handleSearch} />
-        {pokemons.length > 0 && <ListaPokemon pokemons={pokemons} />}
-        {/* <Routes>
-          {/* <Route path='/' element={<ListaPokemon pokemons={pokemons} />} /> */}
-          {/* <Route path='/*' element={<Navigate to='/' />} />
-        </Routes>  */}
+      <Routes>
+          { <Route path='/' element={<Buscador/>} /> }
+          { <Route path='/*' element={<Navigate to='/' />} /> }
+        </Routes> 
       </main>
     </div>
   );
 };
 
-export default Main;
+
+
+export default Main; 
 
