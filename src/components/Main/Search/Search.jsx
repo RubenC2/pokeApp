@@ -10,7 +10,7 @@ const Search = ({ onSubmitForm }) => {
   const [error, setError] = useState(false);
 
 
-// // FETCH INICIAL
+// // FETCH INICIAL para mostrar todos los pokemons al abrir, no funciona de momento
 // useEffect(() => {
 //   const getPokemons = async () => {
 //     try {
@@ -33,7 +33,7 @@ const Search = ({ onSubmitForm }) => {
         const pokemonData = response.data;
 
         // Llama a la función "onSubmitForm" de Main con los datos del Pokémon
-        onSubmitForm([pokemonData]);
+        onSubmitForm(pokemonData);
         setError(false);
       } catch (e) {
         setError(true);

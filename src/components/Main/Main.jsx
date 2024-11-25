@@ -9,7 +9,9 @@ const Main = () => {
 
 
   const handleSearch = (pokemonData) => {
-    setPokemons(pokemonData)
+    setPokemons((prevPokemon) => [...prevPokemon, pokemonData]); // Añade el nuevo Pokémon a la lista
+    //setPokemons(pokemonData); // Añade el nuevo Pokémon a la lista
+
   };
 
   return (
