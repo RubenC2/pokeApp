@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 
 
 function App() {
-  const [datosPokemon, setDatosPokemon] = useState()
+
 
   return (
     <>
